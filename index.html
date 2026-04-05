@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <!-- CRITICAL FIX: viewport dengan initial-scale=1, maximum-scale=1 mencegah layout melompat di mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>PitStop Motor | Bengkel Motor Profesional 10+ Tahun</title>
+  <meta name="description" content="Bengkel motor terpercaya 10+ tahun. Service lengkap: tune-up, ganti oli, ban motor, rem, karburator, injeksi, kelistrikan. Teknisi berpengalaman, harga transparan.">
+  <meta name="keywords" content="bengkel motor, service motor, ganti oli motor, ban motor, tune up motor, bengkel profesional">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2554/2554942.png">
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ===== LIBRARIES ===== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- ===== MAIN CSS ===== -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--
+    CRITICAL FIX 1: Set --vh CSS variable SEBELUM render
+    Mengatasi bug 100vh di Android Chrome (menghitung vh termasuk address bar)
+    Juga menggunakan 100dvh (dynamic viewport height) sebagai primary fix
+  -->
+  <script>
+    (function () {
+      function setVH() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+      }
+      setVH(); /* Run immediately sebelum paint */
+      window.addEventListener('resize', setVH);
+      window.addEventListener('orientationchange', function() {
+        setTimeout(setVH, 100); /* Delay untuk orientasi change */
+      });
+    })();
+  </script>
+</head>
+<body>
+
+<!-- ============================
+     SCROLL PROGRESS BAR
+============================ -->
+<div id="scroll-progress"></div>
+
+<!-- ============================
+     PRELOADER
+============================ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-logo">⚙️</div>
+    <div class="preloader-bar"><div class="preloader-fill"></div></div>
+    <div class="preloader-text">PitStop Motor</div>
+  </div>
+</div>
+
+<!-- ============================
+     NAVBAR
+============================ -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-icon">🏍️</div>
+      <div class="logo-text">
+        PitStop
+        <span>Motor Workshop</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#layanan">Layanan</a>
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#ulasan">Ulasan</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#kontak" class="btn-outline">📍 Lokasi</a>
+      <a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20saya%20ingin%20konsultasi%20servis%20motor" class="btn-primary" target="_blank" rel="noopener">💬 Chat WA</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================
+     MOBILE MENU
+============================ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#layanan"  onclick="closeMenu()">🔧 Layanan</a>
+  <a href="#tentang"  onclick="closeMenu()">👥 Tentang Kami</a>
+  <a href="#galeri"   onclick="closeMenu()">📸 Galeri</a>
+  <a href="#ulasan"   onclick="closeMenu()">⭐ Ulasan</a>
+  <a href="#faq"      onclick="closeMenu()">❓ FAQ</a>
+  <a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20saya%20ingin%20booking%20servis%20motor" target="_blank" rel="noopener" class="btn-primary mobile-wa-btn">
+    💬 Hubungi via WhatsApp
+  </a>
+</div>
+
+<!-- ============================
+     HERO SECTION
+============================ -->
+<section class="hero" id="home">
+
+  <!-- Background Slideshow -->
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="hero-slide"        style="background-image:url('https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="hero-slide"        style="background-image:url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1600&q=80')"></div>
+    <div class="hero-slide"        style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="container hero-content">
+
+    <!-- Kiri: Teks Utama -->
+    <div class="hero-left reveal-item">
+      <div class="hero-eyebrow">
+        <div class="hero-badge-pill">⚙️ Bengkel Terpercaya Sejak 2014</div>
+      </div>
+      <h1>
+        Bengkel Motor<br>
+        <em>Profesional</em> &amp;<br>
+        <span class="outline-text">Terpercaya</span>
+      </h1>
+      <p class="hero-desc">
+        Lebih dari <strong>10 tahun</strong> merawat motor Anda dengan
+        standar teknisi bersertifikat, spare part original, dan harga yang jujur & transparan.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20saya%20mau%20book%20servis%20motor" class="btn-primary btn-lg" target="_blank" rel="noopener">
+          💬 Book Servis Sekarang
+        </a>
+        <a href="#layanan" class="btn-ghost">Lihat Layanan →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="10"><span>+</span></div>
+          <div class="hero-stat-label">Tahun Pengalaman</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="8000"><span>+</span></div>
+          <div class="hero-stat-label">Motor Ditangani</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="15"><span>+</span></div>
+          <div class="hero-stat-label">Teknisi Ahli</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="99"><span>%</span></div>
+          <div class="hero-stat-label">Kepuasan Pelanggan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kanan: Info Card -->
+    <div class="hero-card reveal-item reveal-delay">
+      <div class="hero-open-badge">
+        <div class="open-dot"></div>
+        <span>Buka Sekarang — Senin–Sabtu 07:00–20:00</span>
+      </div>
+      <div class="hero-card-title">Layanan Motor Kami</div>
+      <div class="hero-chips">
+        <div class="chip">🔧 Service Berkala</div>
+        <div class="chip">🛢️ Ganti Oli</div>
+        <div class="chip">🛞 Ganti Ban</div>
+        <div class="chip">🔩 Servis Rem</div>
+        <div class="chip">⚡ Kelistrikan</div>
+        <div class="chip">⛽ Karburator</div>
+        <div class="chip">💉 Injeksi Motor</div>
+        <div class="chip">🔍 Tune-Up</div>
+      </div>
+      <a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20mau%20jadwalkan%20servis" class="btn-primary" target="_blank" rel="noopener" style="width:100%;justify-content:center;">
+        📅 Jadwalkan Servis
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Slideshow Dots -->
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" onclick="goSlide(0)"></div>
+    <div class="hero-dot"        onclick="goSlide(1)"></div>
+    <div class="hero-dot"        onclick="goSlide(2)"></div>
+    <div class="hero-dot"        onclick="goSlide(3)"></div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>Scroll</span>
+  </div>
+
+</section>
+
+<!-- ============================
+     BRAND MARQUEE
+============================ -->
+<div class="brand-strip">
+  <div class="brand-track">
+    <span class="brand-item">Honda</span>       <span class="dot">•</span>
+    <span class="brand-item">Yamaha</span>      <span class="dot">•</span>
+    <span class="brand-item">Kawasaki</span>    <span class="dot">•</span>
+    <span class="brand-item">Suzuki</span>      <span class="dot">•</span>
+    <span class="brand-item">TVS</span>         <span class="dot">•</span>
+    <span class="brand-item">KTM</span>         <span class="dot">•</span>
+    <span class="brand-item">Bajaj</span>       <span class="dot">•</span>
+    <span class="brand-item">Royal Enfield</span><span class="dot">•</span>
+    <span class="brand-item">Vespa</span>       <span class="dot">•</span>
+    <span class="brand-item">Ducati</span>      <span class="dot">•</span>
+    <span class="brand-item">BMW Motorrad</span><span class="dot">•</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="brand-item">Honda</span>       <span class="dot">•</span>
+    <span class="brand-item">Yamaha</span>      <span class="dot">•</span>
+    <span class="brand-item">Kawasaki</span>    <span class="dot">•</span>
+    <span class="brand-item">Suzuki</span>      <span class="dot">•</span>
+    <span class="brand-item">TVS</span>         <span class="dot">•</span>
+    <span class="brand-item">KTM</span>         <span class="dot">•</span>
+    <span class="brand-item">Bajaj</span>       <span class="dot">•</span>
+    <span class="brand-item">Royal Enfield</span><span class="dot">•</span>
+    <span class="brand-item">Vespa</span>       <span class="dot">•</span>
+    <span class="brand-item">Ducati</span>      <span class="dot">•</span>
+    <span class="brand-item">BMW Motorrad</span><span class="dot">•</span>
+  </div>
+</div>
+
+<!-- ============================
+     STATS SECTION
+============================ -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-block reveal-item">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-num" data-target="10">
+        <span class="cnt">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Tahun Berpengalaman</div>
+      <div class="stat-desc">Melayani ribuan pelanggan setia sejak 2014</div>
+    </div>
+    <div class="stat-block reveal-item">
+      <div class="stat-icon">🏍️</div>
+      <div class="stat-num" data-target="8000">
+        <span class="cnt">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Motor Ditangani</div>
+      <div class="stat-desc">Berbagai merk & jenis motor semua kami tangani</div>
+    </div>
+    <div class="stat-block reveal-item">
+      <div class="stat-icon">👨‍🔧</div>
+      <div class="stat-num" data-target="15">
+        <span class="cnt">0</span><span class="stat-suffix">+</span>
+      </div>
+      <div class="stat-label">Teknisi Bersertifikat</div>
+      <div class="stat-desc">Teknisi terlatih dan bersertifikat resmi</div>
+    </div>
+    <div class="stat-block reveal-item">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-num" data-target="4.9">
+        <span class="cnt">0</span><span class="stat-suffix"></span>
+      </div>
+      <div class="stat-label">Rating Google</div>
+      <div class="stat-desc">Berdasarkan 1.200+ ulasan pelanggan puas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     LAYANAN SECTION
+============================ -->
+<section class="services" id="layanan">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="label-tag">⚙️ Layanan Kami</div>
+        <h2 class="section-title reveal-item">Semua Kebutuhan<br><span class="highlight">Motor Anda</span></h2>
+      </div>
+      <div class="services-header-right reveal-item">
+        <p>Kami melayani semua jenis motor dari berbagai merk dengan teknisi berpengalaman dan peralatan modern terkini.</p>
+        <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20tanya%20layanan%20bengkel" class="btn-outline" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+      </div>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card reveal-item">
+        <div class="service-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=400&q=80" alt="Service Berkala" class="service-img">
+          <div class="service-icon-badge">🔧</div>
+        </div>
+        <div class="service-body">
+          <h3>Service Berkala</h3>
+          <p>Perawatan rutin motor Anda meliputi tune-up mesin, pengecekan komponen vital, dan penyetelan karburator/injeksi.</p>
+          <div class="service-tags">
+            <span>Tune-Up</span><span>Karburator</span><span>Injeksi</span>
+          </div>
+          <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20service%20berkala%20motor" class="service-cta" target="_blank" rel="noopener">Chat WA →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal-item">
+        <div class="service-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1587613864521-9ef8dfe617cc?auto=format&fit=crop&w=400&q=80" alt="Ganti Oli Motor" class="service-img">
+          <div class="service-icon-badge">🛢️</div>
+        </div>
+        <div class="service-body">
+          <h3>Ganti Oli Mesin</h3>
+          <p>Ganti oli dengan produk original berkualitas tinggi. Tersedia oli mineral, semi sintetik, dan full sintetik semua merk terkemuka.</p>
+          <div class="service-tags">
+            <span>Oli Original</span><span>Filter Oli</span><span>Shell / Motul</span>
+          </div>
+          <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20ganti%20oli%20motor" class="service-cta" target="_blank" rel="noopener">Chat WA →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal-item">
+        <div class="service-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=400&q=80" alt="Ganti Ban Motor" class="service-img">
+          <div class="service-icon-badge">🛞</div>
+        </div>
+        <div class="service-body">
+          <h3>Ganti Ban Motor</h3>
+          <p>Pemasangan ban motor semua jenis dan ukuran. Tersedia ban tubeless, tube type, balancing dan spooring untuk kenyamanan berkendara.</p>
+          <div class="service-tags">
+            <span>Tubeless</span><span>Balancing</span><span>IRC / FDR</span>
+          </div>
+          <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20ganti%20ban%20motor" class="service-cta" target="_blank" rel="noopener">Chat WA →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal-item">
+        <div class="service-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80" alt="Servis Rem Motor" class="service-img">
+          <div class="service-icon-badge">🔩</div>
+        </div>
+        <div class="service-body">
+          <h3>Servis Rem & Kampas</h3>
+          <p>Pengecekan dan penggantian kampas rem, kaliper, master rem, serta bleeding minyak rem untuk keselamatan berkendara.</p>
+          <div class="service-tags">
+            <span>Kampas Rem</span><span>Kaliper</span><span>Minyak Rem</span>
+          </div>
+          <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20servis%20rem%20motor" class="service-cta" target="_blank" rel="noopener">Chat WA →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal-item">
+        <div class="service-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=400&q=80" alt="Kelistrikan Motor" class="service-img">
+          <div class="service-icon-badge">⚡</div>
+        </div>
+        <div class="service-body">
+          <h3>Kelistrikan Motor</h3>
+          <p>Perbaikan sistem kelistrikan motor: aki, starter, lampu, spedo, kiprok, CDI, dan diagnosa menggunakan alat scan terkini.</p>
+          <div class="service-tags">
+            <span>Aki / Baterai</span><span>Kiprok</span><span>Scan Injeksi</span>
+          </div>
+          <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20servis%20kelistrikan%20motor" class="service-cta" target="_blank" rel="noopener">Chat WA →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal-item service-card--featured">
+        <div class="service-icon-wrap">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80" alt="Overhaul Mesin" class="service-img">
+          <div class="service-icon-badge">🔨</div>
+        </div>
+        <div class="service-body">
+          <h3>Overhaul Mesin</h3>
+          <p>Bongkar pasang dan rekondisi mesin motor secara menyeluruh. Piston, ring, klep, noken as, dan semua komponen internal mesin.</p>
+          <div class="service-tags">
+            <span>Piston & Ring</span><span>Klep</span><span>Noken As</span>
+          </div>
+          <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20konsultasi%20overhaul%20mesin%20motor" class="service-cta" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     TENTANG KAMI
+============================ -->
+<section class="about" id="tentang">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-img-col reveal-item">
+        <div class="about-img-main">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80" alt="Bengkel Motor PitStop">
+          <div class="about-img-badge">
+            <div class="badge-num">10+</div>
+            <div class="badge-text">Tahun<br>Pengalaman</div>
+          </div>
+        </div>
+        <div class="about-img-sub">
+          <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=400&q=80" alt="Teknisi Motor">
+        </div>
+      </div>
+
+      <div class="about-text-col reveal-item">
+        <div class="label-tag">👥 Tentang Kami</div>
+        <h2 class="section-title">Bengkel Motor<br><span class="highlight">Kepercayaan Anda</span></h2>
+        <p class="about-lead">Berdiri sejak 2014, PitStop Motor hadir sebagai bengkel motor profesional yang mengutamakan kualitas, kejujuran, dan kepuasan pelanggan.</p>
+        <p class="about-body">Kami dipercaya merawat ribuan motor dari berbagai merk — Honda, Yamaha, Kawasaki, Suzuki, dan motor premium lainnya. Dengan teknisi bersertifikat, peralatan diagnostik modern, dan spare part bergaransi, kami memastikan motor Anda selalu dalam kondisi prima.</p>
+
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="feat-icon">✅</div>
+            <div>
+              <div class="feat-title">Spare Part Original & Bergaransi</div>
+              <div class="feat-desc">Semua komponen yang kami gunakan adalah original dengan garansi resmi</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">✅</div>
+            <div>
+              <div class="feat-title">Teknisi Bersertifikat AHM & YMKI</div>
+              <div class="feat-desc">Tim kami telah lulus pelatihan dan sertifikasi dari pabrikan resmi</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">✅</div>
+            <div>
+              <div class="feat-title">Harga Transparan & Jujur</div>
+              <div class="feat-desc">Estimasi biaya diberikan sebelum pengerjaan, tanpa biaya tersembunyi</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">✅</div>
+            <div>
+              <div class="feat-title">Garansi Pengerjaan 30 Hari</div>
+              <div class="feat-desc">Setiap pekerjaan kami berikan garansi selama 30 hari penuh</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-certs">
+          <div class="cert-item">🏅 AHM Certified</div>
+          <div class="cert-item">🏅 YMKI Certified</div>
+          <div class="cert-item">🏅 KMI Certified</div>
+          <div class="cert-item">🏅 ISO 9001</div>
+        </div>
+
+        <a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20saya%20ingin%20tahu%20lebih%20lanjut" class="btn-primary" target="_blank" rel="noopener">
+          💬 Konsultasi Gratis
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     PROSES SERVIS
+============================ -->
+<section class="process">
+  <div class="container">
+    <div class="section-head">
+      <div class="label-tag">📋 Cara Kerja</div>
+      <h2 class="section-title reveal-item">Proses Servis<br><span class="highlight">yang Mudah & Cepat</span></h2>
+      <p class="section-sub reveal-item">Hanya 4 langkah mudah untuk mendapatkan motor Anda dalam kondisi terbaik</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal-item">
+        <div class="step-num">01</div>
+        <div class="step-icon">📱</div>
+        <h3>Hubungi via WA</h3>
+        <p>Chat WhatsApp kami untuk booking jadwal servis atau konsultasi masalah motor Anda kapan saja</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step reveal-item">
+        <div class="step-num">02</div>
+        <div class="step-icon">🔍</div>
+        <h3>Diagnosa Motor</h3>
+        <p>Teknisi kami melakukan pemeriksaan menyeluruh dan diagnosa menggunakan peralatan scan modern</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step reveal-item">
+        <div class="step-num">03</div>
+        <div class="step-icon">🔧</div>
+        <h3>Pengerjaan Profesional</h3>
+        <p>Perbaikan dilakukan oleh teknisi bersertifikat dengan spare part original bergaransi</p>
+      </div>
+      <div class="process-connector"></div>
+      <div class="process-step reveal-item">
+        <div class="step-num">04</div>
+        <div class="step-icon">🏍️</div>
+        <h3>Motor Siap Dipakai</h3>
+        <p>Motor dicek ulang sebelum diserahkan, lengkap dengan laporan pengerjaan dan garansi 30 hari</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     GALERI
+============================ -->
+<section class="gallery" id="galeri">
+  <div class="container">
+    <div class="section-head">
+      <div class="label-tag">📸 Galeri</div>
+      <h2 class="section-title reveal-item">Bengkel & Tim<br><span class="highlight">Kami</span></h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item--large reveal-item">
+        <img src="https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=900&q=80" alt="Teknisi Motor">
+        <div class="gallery-overlay"><span>Teknisi Profesional</span></div>
+      </div>
+      <div class="gallery-item reveal-item">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Workshop Motor">
+        <div class="gallery-overlay"><span>Workshop Modern</span></div>
+      </div>
+      <div class="gallery-item reveal-item">
+        <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=500&q=80" alt="Mekanik Bekerja">
+        <div class="gallery-overlay"><span>Mekanik Berpengalaman</span></div>
+      </div>
+      <div class="gallery-item reveal-item">
+        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=500&q=80" alt="Motor Sport">
+        <div class="gallery-overlay"><span>Semua Jenis Motor</span></div>
+      </div>
+      <div class="gallery-item reveal-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=80" alt="Peralatan Modern">
+        <div class="gallery-overlay"><span>Peralatan Modern</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     PAKET SERVIS
+============================ -->
+<section class="packages">
+  <div class="container">
+    <div class="section-head">
+      <div class="label-tag">💰 Paket Servis</div>
+      <h2 class="section-title reveal-item">Paket Perawatan<br><span class="highlight">Motor Terjangkau</span></h2>
+      <p class="section-sub reveal-item">Pilih paket yang sesuai dengan kebutuhan motor Anda</p>
+    </div>
+
+    <div class="packages-grid">
+      <div class="package-card reveal-item">
+        <div class="pkg-badge">Populer</div>
+        <div class="pkg-icon">🛢️</div>
+        <h3>Paket Ganti Oli</h3>
+        <div class="pkg-price">Mulai <strong>Rp 75.000</strong></div>
+        <ul class="pkg-list">
+          <li>✅ Ganti oli mesin 1L</li>
+          <li>✅ Cek kondisi filter oli</li>
+          <li>✅ Cek tekanan ban</li>
+          <li>✅ Cek rem depan & belakang</li>
+          <li>✅ Laporan kondisi motor</li>
+        </ul>
+        <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20paket%20ganti%20oli" class="btn-outline" target="_blank" rel="noopener">Booking Sekarang</a>
+      </div>
+
+      <div class="package-card package-card--featured reveal-item">
+        <div class="pkg-badge pkg-badge--best">Terlengkap</div>
+        <div class="pkg-icon">🔧</div>
+        <h3>Paket Service Lengkap</h3>
+        <div class="pkg-price">Mulai <strong>Rp 175.000</strong></div>
+        <ul class="pkg-list">
+          <li>✅ Ganti oli mesin & filter</li>
+          <li>✅ Tune-up karburator/injeksi</li>
+          <li>✅ Cek & stel rem</li>
+          <li>✅ Cek rantai & gir</li>
+          <li>✅ Cek aki & kelistrikan</li>
+          <li>✅ Cuci motor gratis</li>
+          <li>✅ Garansi 30 hari</li>
+        </ul>
+        <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20paket%20service%20lengkap" class="btn-primary" target="_blank" rel="noopener">Booking Sekarang</a>
+      </div>
+
+      <div class="package-card reveal-item">
+        <div class="pkg-badge pkg-badge--pro">Premium</div>
+        <div class="pkg-icon">🏍️</div>
+        <h3>Paket Motor Premium</h3>
+        <div class="pkg-price">Mulai <strong>Rp 350.000</strong></div>
+        <ul class="pkg-list">
+          <li>✅ Semua paket service lengkap</li>
+          <li>✅ Tune-up mesin komprehensif</li>
+          <li>✅ Cek & stel klep</li>
+          <li>✅ Scan injeksi digital</li>
+          <li>✅ Cek suspensi & bearing</li>
+          <li>✅ Laporan diagnosa lengkap</li>
+          <li>✅ Garansi 60 hari</li>
+        </ul>
+        <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20paket%20motor%20premium" class="btn-outline" target="_blank" rel="noopener">Booking Sekarang</a>
+      </div>
+    </div>
+
+    <div class="packages-note reveal-item">
+      💡 Harga dapat bervariasi tergantung merk & tipe motor. <a href="https://wa.me/62895635754671?text=Halo%2C%20mau%20tanya%20estimasi%20biaya%20servis" target="_blank" rel="noopener">Chat WA untuk estimasi tepat →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     TESTIMONI
+============================ -->
+<section class="testi" id="ulasan">
+  <div class="container">
+    <div class="section-head">
+      <div class="label-tag">⭐ Ulasan Pelanggan</div>
+      <h2 class="section-title reveal-item">Kata Mereka<br><span class="highlight">Tentang Kami</span></h2>
+    </div>
+
+    <div class="swiper testiSwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p>"Motor Yamaha R15 saya sudah bertahun-tahun di PitStop Motor. Teknisinya jujur, harga transparan, dan hasilnya selalu memuaskan. Gak mau pindah bengkel lain!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">RD</div>
+              <div>
+                <div class="testi-name">Rizky Darmawan</div>
+                <div class="testi-meta">Pelanggan sejak 2019 · Honda CBR250RR</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p>"Service di sini cepat, bersih, dan profesional. Motor NMAX saya berasa baru setelah tune-up. Yang paling suka, mereka foto kondisi motor sebelum & sesudah dikerjakan."</p>
+            <div class="testi-author">
+              <div class="testi-avatar">SA</div>
+              <div>
+                <div class="testi-name">Siti Aminah</div>
+                <div class="testi-meta">Pelanggan sejak 2021 · Yamaha NMAX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p>"Overhaul mesin Vario 150 selesai tepat waktu dan sesuai estimasi. Tidak ada biaya tambahan yang tidak dijelaskan sebelumnya. Sangat terpercaya dan recommended!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">BH</div>
+              <div>
+                <div class="testi-name">Budi Hartono</div>
+                <div class="testi-meta">Pelanggan sejak 2020 · Honda Vario 150</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p>"Booking via WA sangat mudah, antri tidak lama. Motor KLX saya yang susah start akhirnya ketemu masalahnya dalam hitungan menit pakai alat scan. Mantap!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AP</div>
+              <div>
+                <div class="testi-name">Aldi Pratama</div>
+                <div class="testi-meta">Pelanggan sejak 2022 · Kawasaki KLX 150</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p>"Ganti ban tubeless di sini cepet banget, 30 menit sudah selesai. Harga juga bersaing, spare part ori semua. Langsung book balik buat service bulan depan!"</p>
+            <div class="testi-author">
+              <div class="testi-avatar">NR</div>
+              <div>
+                <div class="testi-name">Nisa Rahayu</div>
+                <div class="testi-meta">Pelanggan sejak 2023 · Yamaha Aerox 155</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Rating Summary -->
+    <div class="rating-summary reveal-item">
+      <div class="rating-big">4.9</div>
+      <div class="rating-detail">
+        <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+        <div class="rating-count">Berdasarkan 1.200+ ulasan</div>
+        <div class="rating-platforms">
+          <span>📱 Google</span>
+          <span>📘 Facebook</span>
+          <span>💬 WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     FAQ
+============================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-left">
+        <div class="label-tag">❓ FAQ</div>
+        <h2 class="section-title reveal-item">Pertanyaan<br><span class="highlight">yang Sering Ditanya</span></h2>
+        <p class="reveal-item">Tidak menemukan jawaban yang Anda cari? Hubungi kami langsung via WhatsApp.</p>
+        <a href="https://wa.me/62895635754671?text=Halo%2C%20saya%20punya%20pertanyaan%20tentang%20bengkel" class="btn-primary" target="_blank" rel="noopener" style="margin-top:24px;">
+          💬 Tanya Langsung
+        </a>
+      </div>
+
+      <div class="faq-items">
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Berapa biaya service motor di PitStop Motor?</span>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Biaya service mulai dari Rp 75.000 untuk ganti oli, Rp 175.000 untuk service lengkap. Harga dapat berbeda tergantung merk dan kondisi motor. Kami selalu memberikan estimasi biaya terlebih dahulu sebelum pengerjaan dimulai.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Apakah spare part yang digunakan original?</span>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Ya, semua spare part yang kami gunakan adalah original (OEM) dari pabrikan resmi atau aftersales bergaransi. Kami tidak menggunakan spare part KW. Pelanggan juga boleh memilih atau membawa spare part sendiri.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Berapa lama waktu service motor?</span>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Service berkala dan ganti oli biasanya membutuhkan waktu 1-2 jam. Perbaikan lebih besar seperti overhaul mesin bisa 1-3 hari kerja. Kami akan memberikan estimasi waktu pengerjaan saat konsultasi awal.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Apakah ada garansi setelah servis?</span>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Ya! Semua pengerjaan kami berikan garansi minimal 30 hari. Paket premium mendapatkan garansi hingga 60 hari. Jika ada masalah setelah servis dalam masa garansi, kami akan perbaiki tanpa biaya tambahan.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Motor apa saja yang dilayani?</span>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Kami melayani semua jenis dan merk motor: Honda, Yamaha, Kawasaki, Suzuki, TVS, Bajaj, KTM, Royal Enfield, Vespa, dan motor premium lainnya. Mulai dari motor bebek, matic, sport, hingga moge (motor gede).</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span>Bagaimana cara booking servis?</span>
+            <div class="faq-arrow">▼</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Booking sangat mudah! Cukup chat WhatsApp kami di 0895-6357-54671, sampaikan kondisi motor dan pilih jadwal yang tersedia. Kami buka Senin–Sabtu pukul 07.00–20.00. Tidak perlu bayar uang muka untuk booking.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     CTA / KONTAK
+============================ -->
+<section class="cta-section" id="kontak">
+  <div class="container">
+    <div class="cta-inner reveal-item">
+      <div class="cta-glow"></div>
+
+      <div class="cta-left">
+        <div class="label-tag">📞 Hubungi Kami</div>
+        <h2 class="section-title">Motor Bermasalah?<br><span class="highlight">Kami Siap Bantu!</span></h2>
+        <p>Tim teknisi kami siap menjawab pertanyaan Anda dan membantu menentukan layanan yang tepat. Response time kurang dari 5 menit!</p>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Alamat</div>
+              <div class="contact-val">Jl. Raya Pasar Kemis No. 88, Tangerang</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Telepon / WhatsApp</div>
+              <div class="contact-val">0895-6357-54671</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕒</div>
+            <div>
+              <div class="contact-label">Jam Operasional</div>
+              <div class="contact-val">Senin – Sabtu: 07.00 – 20.00 WIB</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-right">
+        <a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20saya%20mau%20booking%20servis%20motor" class="cta-wa-btn" target="_blank" rel="noopener">
+          <div class="cta-wa-icon">💬</div>
+          <div class="cta-wa-text">
+            <span>Chat via WhatsApp</span>
+            <small>Balas dalam 5 menit</small>
+          </div>
+        </a>
+        <a href="tel:+62895635754671" class="cta-call-btn">
+          📞 Hubungi Sekarang
+        </a>
+        <div class="cta-trust">
+          <span>🔒 Privasi terjaga</span>
+          <span>⚡ Fast response</span>
+          <span>✅ Konsultasi gratis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     FOOTER
+============================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">🏍️</div>
+          <div class="logo-text">PitStop<span>Motor Workshop</span></div>
+        </div>
+        <p>Bengkel motor profesional dengan pengalaman lebih dari 10 tahun. Teknisi bersertifikat, spare part original, harga transparan & garansi pengerjaan untuk semua jenis motor.</p>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" title="Instagram">📸</a>
+          <a class="social-btn" href="#" title="Facebook">📘</a>
+          <a class="social-btn" href="https://wa.me/62895635754671" title="WhatsApp" target="_blank" rel="noopener">💬</a>
+          <a class="social-btn" href="#" title="TikTok">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Layanan</h5>
+        <ul>
+          <li><a href="#layanan">Service Berkala</a></li>
+          <li><a href="#layanan">Ganti Oli Mesin</a></li>
+          <li><a href="#layanan">Ganti Ban Motor</a></li>
+          <li><a href="#layanan">Servis Rem & Kampas</a></li>
+          <li><a href="#layanan">Kelistrikan Motor</a></li>
+          <li><a href="#layanan">Overhaul Mesin</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Informasi</h5>
+        <ul>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#galeri">Galeri Bengkel</a></li>
+          <li><a href="#ulasan">Ulasan Pelanggan</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontak</h5>
+        <ul>
+          <li><a href="#">📍 Jl. Raya Pasar Kemis No. 88</a></li>
+          <li><a href="tel:+62895635754671">📞 0895-6357-54671</a></li>
+          <li><a href="https://wa.me/62895635754671" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+          <li><a href="#">🕒 Senin–Sabtu 07:00–20:00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PitStop Motor. All rights reserved.</span>
+      <span>Bengkel Motor Profesional & Terpercaya 🏍️</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================
+     STICKY WHATSAPP
+============================ -->
+<a href="https://wa.me/62895635754671?text=Halo%20PitStop%20Motor%2C%20saya%20mau%20booking%20servis%20motor" class="sticky-wa" id="stickyWa" target="_blank" rel="noopener">
+  <span class="sticky-wa-pulse"></span>
+  💬 Chat WhatsApp — Booking Servis Motor
+</a>
+
+<!-- ============================
+     SCRIPTS — LIBRARIES
+============================ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- ============================
+     SCRIPTS — APP LOGIC
+============================ -->
+<script>
+'use strict';
+
+/* ─── PRELOADER ─── */
+window.addEventListener('load', function () {
+  var pre = document.getElementById('preloader');
+  if (pre) {
+    pre.classList.add('done');
+    setTimeout(function () { pre.style.display = 'none'; }, 600);
+  }
+});
+
+/* ─── SCROLL PROGRESS BAR ─── */
+var scrollBar = document.getElementById('scroll-progress');
+function updateScrollBar() {
+  var ratio = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  scrollBar.style.width = (ratio * 100).toFixed(1) + '%';
+}
+
+/* ─── NAVBAR SCROLLED ─── */
+var navbar = document.getElementById('navbar');
+function updateNavbar() {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}
+
+/* ─── STICKY WA SHOW/HIDE ─── */
+var stickyWa = document.getElementById('stickyWa');
+function updateStickyWa() {
+  if (window.scrollY >= 200) {
+    stickyWa.classList.add('visible');
+  } else {
+    stickyWa.classList.remove('visible');
+  }
+}
+
+/* Combined scroll handler — passive untuk performa mobile */
+window.addEventListener('scroll', function () {
+  updateScrollBar();
+  updateNavbar();
+  updateStickyWa();
+}, { passive: true });
+
+/* ─── MOBILE MENU ─── */
+var mobileMenu = document.getElementById('mobileMenu');
+var hamburger  = document.getElementById('hamburger');
+
+function toggleMenu() {
+  var isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('active', isOpen);
+  /* Prevent body scroll when menu open */
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* Close menu when clicking outside */
+document.addEventListener('click', function (e) {
+  if (mobileMenu.classList.contains('open') &&
+      !mobileMenu.contains(e.target) &&
+      !hamburger.contains(e.target)) {
+    closeMenu();
+  }
+});
+
+/* ─── HERO SLIDESHOW ─── */
+var slides = document.querySelectorAll('.hero-slide');
+var dots   = document.querySelectorAll('.hero-dot');
+var curSlide = 0;
+
+function goSlide(idx) {
+  slides[curSlide].classList.remove('active');
+  dots[curSlide].classList.remove('active');
+  curSlide = (idx + slides.length) % slides.length;
+  slides[curSlide].classList.add('active');
+  dots[curSlide].classList.add('active');
+}
+
+var slideInterval = setInterval(function () { goSlide(curSlide + 1); }, 5000);
+
+/* Pause on page hidden */
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    clearInterval(slideInterval);
+  } else {
+    slideInterval = setInterval(function () { goSlide(curSlide + 1); }, 5000);
+  }
+});
+
+/* ─── HERO STAT COUNTERS (on load) ─── */
+function animateHeroCounters() {
+  document.querySelectorAll('.hero-stat-num[data-count]').forEach(function (el) {
+    var target = parseInt(el.dataset.count);
+    var suffix = el.querySelector('span').textContent;
+    var start  = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / 1500, 1);
+      var v = Math.floor(target * (1 - Math.pow(1 - p, 3)));
+      el.innerHTML = v + '<span>' + suffix + '</span>';
+      if (p < 1) requestAnimationFrame(step);
+    }
+    setTimeout(function () { requestAnimationFrame(step); }, 400);
+  });
+}
+animateHeroCounters();
+
+/* ─── STATS SECTION COUNTER (Intersection Observer) ─── */
+function animateStatCounters() {
+  document.querySelectorAll('.stat-num[data-target]').forEach(function (el) {
+    var target  = parseFloat(el.dataset.target);
+    var cntEl   = el.querySelector('.cnt');
+    var isFloat = target % 1 !== 0;
+    var start   = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / 1800, 1);
+      var v = target * (1 - Math.pow(1 - p, 3));
+      cntEl.textContent = isFloat ? v.toFixed(1) : Math.floor(v);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+var statsTriggered = false;
+var statsEl = document.querySelector('.stats-section');
+if (statsEl && 'IntersectionObserver' in window) {
+  new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting && !statsTriggered) {
+      statsTriggered = true;
+      animateStatCounters();
+    }
+  }, { threshold: 0.2 }).observe(statsEl);
+} else if (statsEl) {
+  /* Fallback: run immediately if no IO support */
+  animateStatCounters();
+}
+
+/* ─── SCROLL REVEAL (CSS-based, compatible with mobile) ─── */
+/*
+  CRITICAL FIX: Menggunakan IntersectionObserver custom TANPA AOS library
+  Ini memastikan animasi bekerja di mobile tanpa bug.
+  Elements dengan class .reveal-item akan di-animate saat masuk viewport.
+*/
+if ('IntersectionObserver' in window) {
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        /* Unobserve setelah revealed untuk performa */
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,  /* Trigger lebih awal agar mobile tidak blank */
+    rootMargin: '0px 0px -30px 0px' /* Sedikit sebelum masuk viewport */
+  });
+
+  /* Observe semua reveal items */
+  document.querySelectorAll('.reveal-item').forEach(function (el) {
+    revealObserver.observe(el);
+  });
+} else {
+  /* FALLBACK: Jika browser tidak support IO, langsung tampilkan semua */
+  document.querySelectorAll('.reveal-item').forEach(function (el) {
+    el.classList.add('revealed');
+  });
+}
+
+/* SAFETY NET: Setelah 1.5 detik, reveal semua item yang belum revealed
+   Ini memastikan tidak ada konten yang tersembunyi di mobile */
+setTimeout(function () {
+  document.querySelectorAll('.reveal-item:not(.revealed)').forEach(function (el) {
+    el.classList.add('revealed');
+  });
+}, 1500);
+
+/* ─── SWIPER TESTIMONIALS ─── */
+new Swiper('.testiSwiper', {
+  loop: true,
+  centeredSlides: true,
+  slidesPerView: 1.1,
+  spaceBetween: 16,
+  speed: 600,
+  autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
+  grabCursor: true,
+  pagination: { el: '.swiper-pagination', clickable: true },
+  breakpoints: {
+    640:  { slidesPerView: 1.4, spaceBetween: 20 },
+    900:  { slidesPerView: 2.1, spaceBetween: 24 },
+    1100: { slidesPerView: 3,   spaceBetween: 28 }
+  }
+});
+
+/* ─── FAQ ACCORDION ─── */
+function toggleFaq(btn) {
+  var item   = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  /* Close all */
+  document.querySelectorAll('.faq-item.open').forEach(function (i) {
+    i.classList.remove('open');
+    i.querySelector('.faq-arrow').textContent = '▼';
+  });
+  /* Open clicked if it was closed */
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.querySelector('.faq-arrow').textContent = '▲';
+  }
+}
+
+/* ─── SMOOTH SCROLL for anchor links ─── */
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      var offset = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
+  });
+});
+
+</script>
+</body>
+</html>
