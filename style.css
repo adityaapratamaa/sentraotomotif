@@ -655,7 +655,7 @@ body::before {
 
 .hero h1 .outline-text {
   -webkit-text-stroke: 2px rgba(255,255,255,0.3);
-  color: transparent;
+  color: rgba(255,255,255,0.72);
 }
 
 .hero-desc {
